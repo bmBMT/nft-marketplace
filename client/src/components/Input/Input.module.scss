@@ -1,0 +1,60 @@
+@import '@scss/variables';
+
+.label {
+  position: relative;
+  width: fit-content;
+  width: 100%;
+  height: 56px;
+
+  & img {
+    position: absolute;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    filter: invert(86%) sepia(8%) saturate(8%) hue-rotate(351deg) brightness(94%) contrast(74%);
+  }
+}
+
+.input {
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 20px;
+  padding: 12px 20px;
+  height: 46px;
+  color: $bg-color;
+  outline: none;
+  border: 2px solid $secondary-bg;
+  width: 100%;
+
+  &::placeholder {
+    color: $bg-color;
+  }
+
+  &:focus {
+    border: 2px solid $btn-bg;
+  }
+
+  &.withIcon {
+    padding-left: 46px;
+  }
+
+  &.password {
+    padding-right: 46px;
+  }
+
+  &.error {
+    border: 2px solid $error-color;
+    color: $error-color;
+  }
+}
+
+.icon {
+  top: 13px;
+  left: 20px;
+}
+
+.eye {
+  top: 14px;
+  right: 20px;
+  cursor: pointer;
+}

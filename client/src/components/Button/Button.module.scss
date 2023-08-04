@@ -1,0 +1,51 @@
+@import '@scss/variables';
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  & img {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background-color: #a159ff81;
+  }
+}
+
+.primary {
+  height: 72px;
+  font-size: 22px;
+}
+
+.secondary {
+  height: 60px;
+  font-size: 16px;
+}
+
+.tertiary {
+  height: 46px;
+  font-size: 16px;
+}
+
+.filled {
+  border: 2px solid $btn-bg;
+  background-color: $btn-bg;
+}
+
+.outlined {
+  border: 2px solid $btn-bg;
+  background: inherit;
+
+  & img {
+    filter: brightness(0) saturate(100%) invert(41%) sepia(48%) saturate(3860%) hue-rotate(242deg)
+      brightness(100%) contrast(100%);
+  }
+}

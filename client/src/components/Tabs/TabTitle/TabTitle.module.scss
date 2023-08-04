@@ -1,0 +1,61 @@
+@import '@scss/variables';
+
+.title {
+  width: 100%;
+  text-align: center;
+  padding: 14px 0;
+  transition: border-bottom 0.3s;
+  border-color: $secondary-bg;
+}
+
+.title.active {
+  border-bottom: 2px solid #858584;
+}
+
+.title:not(.active) {
+  cursor: pointer;
+}
+
+.title:not(.active):hover {
+  border-bottom: 2px solid $secondary-bg;
+}
+
+.title:hover .titleBtn {
+  color: #ffffff;
+}
+
+.titleBtn {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  color: #858584;
+  display: flex;
+  gap: 16px;
+  margin: auto;
+  align-items: center;
+}
+.title.active .titleBtn {
+  color: #ffffff;
+}
+
+.count {
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color: $secondary-bg;
+  font-size: 16px;
+}
+.title.active .count {
+  background-color: #858584;
+}
+
+@media (max-width: 1000px) {
+  .titleBtn {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 670px) {
+  .count {
+    display: none;
+  }
+}

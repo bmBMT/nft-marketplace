@@ -1,0 +1,13 @@
+.link {
+  color: #858584;
+  cursor: pointer;
+
+  & img {
+    filter: invert(59%) sepia(10%) saturate(8%) hue-rotate(21deg) brightness(87%) contrast(93%);
+  }
+
+  &:hover img {
+    filter: brightness(0) saturate(100%) invert(45%) sepia(82%) saturate(3543%) hue-rotate(241deg)
+      brightness(100%) contrast(103%);
+  }
+}

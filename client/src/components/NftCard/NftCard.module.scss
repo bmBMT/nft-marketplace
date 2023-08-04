@@ -1,0 +1,86 @@
+@import '@scss/variables';
+
+.card {
+  display: block;
+  min-width: fit-content;
+  background-color: $bg-color;
+  color: white;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.card:hover {
+  color: white;
+}
+
+.imgContainer {
+  overflow: hidden;
+}
+
+.image {
+  height: 295px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: scale 300ms;
+  line-height: unset !important;
+}
+
+@media (max-width: 670px) {
+  .image {
+    height: 238px;
+  }
+}
+
+.info {
+  padding: 20px 30px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.artistInfo {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.artistInfo > * {
+  font-family: 'Space Mono', monospace;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+
+.additionalInfo {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.additional {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.additional > * {
+  font-family: 'Space Mono', monospace;
+}
+
+.staticImg:hover {
+  .image {
+    scale: 1.03;
+  }
+}
+
+.nftInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
