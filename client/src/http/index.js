@@ -1,11 +1,11 @@
 import { LocalStorage } from "@/services";
 import axios from "axios";
 
-export const API_URL = import.meta.env.VITE_API_URL
+export const API_URL = import.meta.env.VITE_API_URL + '/api'
 
 const $api = axios.create({
   withCredentials: true,
-  baseURL: API_URL + '/api'
+  baseURL: API_URL
 })
 
 $api.interceptors.request.use((config) => {
