@@ -11,7 +11,7 @@ class AuthController {
       }
       const { username, email, password, img } = req.body;
       const userData = await authService.registration(username, email, password, img)
-      res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, secure: true })
+      res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, secure: true, sameSite: 'none' })
       return res.json(userData)
     } catch (e) {
       next(e);
@@ -26,8 +26,7 @@ class AuthController {
       }
       const { email, password } = req.body;
       const userData = await authService.login(email, password);
-      console.log(res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, secure: true }));
-      res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, secure: true })
+      res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, secure: true, sameSite: 'none' })
       return res.json(userData)
     } catch (e) {
       next(e);
@@ -50,7 +49,7 @@ class AuthController {
     try {
       const { refreshToken } = req.cookies;
       const userData = await authService.refresh(refreshToken)
-      res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, secure: true })
+      res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, secure: true, sameSite: 'none' })
       return res.json(userData)
     } catch (e) {
       next(e);
