@@ -12,7 +12,7 @@ class UserController {
       const { id } = req.body;
 
       const data = await userService.getUser(id);
-      
+
       return res.json(data);
     } catch (e) {
       next(e);
@@ -45,6 +45,24 @@ class UserController {
       const { id } = req.body;
       const userData = await userService.unfollow(id, user.id);
       return res.json(userData);
+    } catch (e) {
+      next(e)
+    }
+  }
+
+  async changeAvatar(req, res, next) {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return next(ApiError.BadRequest('Validation error', errors.array()));
+      }
+
+      const user = req.user;
+      const { nftId } = req.body;
+
+      const avatarLink = await userService.changeAvatar(nftId, user.id);
+
+      return res.json(avatarLink)
     } catch (e) {
       next(e)
     }

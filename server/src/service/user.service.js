@@ -60,6 +60,18 @@ class UserService {
     const userDto = new UserDto(user)
     return userDto;
   }
+
+  async changeAvatar(nftId, userId) {
+    const user = await UserModel.findById(userId);
+    const nft = await NftModel.findById(nftId);
+
+    const avatar = nft.name.split(' ').join('_') + "/" + nft.img;
+    user.img = avatar;
+    user.save();
+
+    const avatarLink = process.env.API_URL + "/" + user.img;
+    return avatarLink;
+  }
 }
 
 export default new UserService();
