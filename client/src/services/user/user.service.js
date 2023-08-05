@@ -1,3 +1,4 @@
+
 import $api from "@/http";
 
 export default class UserService {
@@ -11,5 +12,9 @@ export default class UserService {
 
   static async unfollow(id) {
     return $api.post('/user/unfollow', { id });
+  }
+
+  static async changeAvatar(nftId) {
+    return $api.post('/user/changeAvatar', { nftId });
   }
 }

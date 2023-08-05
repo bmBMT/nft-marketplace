@@ -31,6 +31,10 @@ export default class UserStore {
     this.isLoading = bool;
   }
 
+  setAvatar(avatarLink) {
+    this.user.img = avatarLink;
+  }
+
   async login(email, password) {
     try {
       const response = await AuthService.login(email, password);
@@ -139,6 +143,15 @@ export default class UserStore {
     try {
       const response = await UserService.unfollow(id);
       this.setUser(response.data)
+    } catch (e) {
+      return e.response?.data?.message;
+    }
+  }
+
+  async changeAvatar(nftId) {
+    try {
+      const response = await UserService.changeAvatar(nftId);
+      this.setAvatar(response.data);
     } catch (e) {
       return e.response?.data?.message;
     }
