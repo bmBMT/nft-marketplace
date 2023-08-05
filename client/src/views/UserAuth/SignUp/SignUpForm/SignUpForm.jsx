@@ -1,21 +1,27 @@
 import { useForm } from 'react-hook-form'
-import FirstStep from './FirstStep/FirstStep'
 import { useContext, useState } from 'react'
-import SecondStep from './SecondStep/SecondStep'
-import TwoStepForm from '@/components/TwoStepForm/TwoStepForm'
 import { Context } from '@/main'
 import { useNavigate } from 'react-router-dom'
+import Col from '@/components/Col/Col'
+import UsernameInput from '../../FormFields/UsernameInput/UsernameInput'
+import EmailInput from '../../FormFields/EmailInput/EmailInput'
+import PasswordInput from '../../FormFields/PasswordInput/PasswordInput'
+import ConfirmPasswordInput from '../../FormFields/ConfirmPasswordInput/ConfirmPasswordInput'
+import ErrorMessage from '@/components/ErrorMessage/ErrorMessage'
+import Button from '@/components/Button/Button'
+import { useDeviceWidth } from '@/utils/hooks/useDeviceWidth'
 
 const SignUpForm = () => {
-  const [isFirstStep, setIsFirstStep] = useState(true)
   const { UserStore } = useContext(Context)
   const [serverError, setServerError] = useState('')
   const navigate = useNavigate()
+  const { isDesktop, isTablet } = useDeviceWidth()
+
+  const maxWidth = isDesktop || isTablet ? 330 : 'none'
 
   const {
     register,
     watch,
-    control,
     formState: { errors, isValid },
     handleSubmit,
   } = useForm({
@@ -23,11 +29,9 @@ const SignUpForm = () => {
   })
 
   async function onSubmit(data) {
-    const { username, email, password, img } = data
-    const imgValue = img.value
-    const _img = imgValue.slice(imgValue.lastIndexOf('/') + 1, -4)
+    const { username, email, password } = data
 
-    const error = await UserStore.registration(username, email, password, _img)
+    const error = await UserStore.registration(username, email, password)
     if (error) {
       setServerError(error)
     } else {
@@ -35,41 +39,23 @@ const SignUpForm = () => {
     }
   }
 
-  function prevStep(e) {
-    e.preventDefault()
-    setIsFirstStep(true)
-  }
-
-  function nextStep(e) {
-    e.preventDefault()
-    setIsFirstStep(false)
-  }
-
   return (
-    <TwoStepForm
-      firstStep={
-        <FirstStep
-          register={register}
-          errors={errors}
-          watch={watch}
-          nextStep={nextStep}
-          isValid={isValid}
-        />
-      }
-      secondStep={
-        <SecondStep
-          register={register}
-          isValid={isValid}
-          control={control}
-          prevStep={prevStep}
-          watch={watch}
-          handleSubmit={handleSubmit}
-          onSubmit={onSubmit}
-          serverError={serverError}
-        />
-      }
-      isFirstStep={isFirstStep}
-    />
+    <form style={{ maxWidth }} noValidate>
+      <Col gap={30}>
+        <Col gap={15}>
+          <UsernameInput register={register} errors={errors} />
+          <EmailInput register={register} errors={errors} />
+          <PasswordInput register={register} errors={errors} />
+          <ConfirmPasswordInput register={register} watch={watch} errors={errors} />
+        </Col>
+        <Col>
+          <ErrorMessage error={serverError} />
+          <Button onClick={handleSubmit(onSubmit)} disabled={!isValid} width="100%" size="tertiary">
+            Create Account
+          </Button>
+        </Col>
+      </Col>
+    </form>
   )
 }
 

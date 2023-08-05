@@ -3,8 +3,7 @@ import Row from '../Row/Row'
 import { useDeviceWidth } from '@/utils/hooks/useDeviceWidth'
 
 const TwoStepForm = ({ firstStep, secondStep, isFirstStep }) => {
-  const { isDesktop, isTablet } = useDeviceWidth()
-  const maxWidth = isDesktop || isTablet ? 330 : 'none'
+  
 
   return (
     <form className={styles.form} style={{ maxWidth }} noValidate>
