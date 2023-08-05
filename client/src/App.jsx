@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Router from './components/Router/Router'
 import NavigationBar from './views/Navigation/NavigationBar/NavigationBar'
 import 'react-loading-skeleton/dist/skeleton.css'
+import Scrollbars from 'react-custom-scrollbars-2'
 
 const App = () => {
   const { UserStore } = useContext(Context)
@@ -22,10 +23,12 @@ const App = () => {
   }
 
   return (
-    <BrowserRouter>
-      <NavigationBar />
-      <Router />
-    </BrowserRouter>
+    <Scrollbars autoHide style={{ height: '100vh' }}>
+      <BrowserRouter>
+        <NavigationBar />
+        <Router />
+      </BrowserRouter>
+    </Scrollbars>
   )
 }
 
