@@ -35,6 +35,7 @@ export default class UserStore {
     try {
       const response = await AuthService.login(email, password);
       LocalStorage.set('token', response.data.accessToken)
+      console.log(response.data.accessToken);
       this.setIsAuth(true);
       this.setUser(response.data.user);
       this.setWallet(response.data.wallet);
