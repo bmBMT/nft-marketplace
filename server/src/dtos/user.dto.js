@@ -14,7 +14,7 @@ export default class UserDto {
     this.id = model._id;
     this.username = model.username;
     this.email = model.email;
-    this.img = `/src/assets/avatars/${model.img}.svg`;
+    this.img = process.env.API_URL + "/" + model.img;
     this.followers = model.followers;
     this.bio = model.bio;
     this.links = model.links;

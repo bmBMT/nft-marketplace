@@ -6,15 +6,17 @@ import ApiError from '../exceptions/api.error.js'
 import walletService from './wallet.service.js'
 
 class UserService {
-  async registration(username, email, password, img) {
+  async registration(username, email, password) {
     const usernameCandidate = await UserModel.findOne({ username });
     if (usernameCandidate) {
-      throw ApiError.BadRequest('Invalid username field')
+      throw ApiError.BadRequest('Username already in use')
     }
     const emailCandidate = await UserModel.findOne({ email });
     if (emailCandidate) {
-      throw ApiError.BadRequest('Invalid email field')
+      throw ApiError.BadRequest('This email is already taken')
     }
+
+    const img = "default/avatar.webp";
 
     const hashPassword = await bcrypt.hash(password, 3);
 

@@ -37,6 +37,12 @@ router.post(
   body('id').isString(),
   userController.unfollow
 );
+router.post(
+  '/user/changeAvatar',
+  authMiddleware,
+  body('nftId').isString(),
+  userController.changeAvatar
+);
 
 // wallet
 router.post('/wallet/increment',
