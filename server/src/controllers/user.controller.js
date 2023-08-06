@@ -78,7 +78,7 @@ class UserController {
       const user = req.user;
       const { nftId } = req.body;
 
-      const placeholderLink = await userService.changePlaceholder(nftId, user.id);
+      const { placeholderLink } = await userService.changePlaceholder(nftId, user.id);
 
       return res.json(placeholderLink)
     } catch (e) {

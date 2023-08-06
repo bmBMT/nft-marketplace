@@ -43,7 +43,7 @@ class UserService {
       throw ApiError.BadRequest('Incorrect password')
     }
 
-    const handledUser = handleUserPictures(user);
+    const handledUser = await handleUserPictures(user);
 
     const userDto = new UserDto(handledUser);
     const tokens = tokenService.generateTokens({ ...userDto });
