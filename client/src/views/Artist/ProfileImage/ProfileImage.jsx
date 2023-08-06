@@ -12,7 +12,7 @@ const ProfileImage = ({ isLoading, avatar, placeholder }) => {
   return (
     <div style={{ height: imgHeight + 70 }}>
       {!isLoading ? (
-        <ImageBackground height={imgHeight} img={placeholder} />
+        <ImageBackground height={imgHeight} img={placeholder} gradient />
       ) : (
         <Skeleton baseColor="#232323" height={imgHeight} />
       )}
