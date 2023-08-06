@@ -65,7 +65,10 @@ router.post('/wallet/decrement',
 // nft
 router.post('/nft/create',
   authMiddleware,
+  body('name').isString(),
+  body('description').isString(),
   body('categorie').isString(),
+  body('tags').isArray(),
   body('price').isNumeric(),
   nftController.create
 );
