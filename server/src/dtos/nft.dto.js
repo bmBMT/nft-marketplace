@@ -13,7 +13,7 @@ export default class NftDto {
   constructor(model) {
     this.id = model._id;
     this.name = model.name;
-    this.img = process.env.API_URL + "/" + model.name.split(' ').join('_') + "/" + model.img;
+    this.img = process.env.API_URL + "/" + model._id + "/" + model.img;
     this.created = model.created;
     this.createdBy = model.createdBy;
     this.owner = model.owner;
