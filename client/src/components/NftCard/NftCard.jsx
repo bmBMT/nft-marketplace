@@ -15,7 +15,7 @@ const NftCard = ({ nft, user }) => {
         <div className={styles.nftInfo}>
           <h5>{nft.name}</h5>
           <div className={styles.artistInfo}>
-            <img className={styles.avatar} src={user.img} alt="avatar" />
+            <img className={styles.avatar} src={user.avatar} alt="avatar" />
             <span>{user.username}</span>
           </div>
         </div>

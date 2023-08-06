@@ -10,7 +10,7 @@ const UserInfo = ({ onClick }) => {
 
   return (
     <Row onClick={onClick} cursor="pointer" gap={15}>
-      <img src={user.img} alt="avatar" className="img-45" style={{ borderRadius: 100 }} />
+      <img src={user.avatar} alt="avatar" className="img-45" style={{ borderRadius: 100 }} />
       <Col>
         <h5 style={{ fontSize: 18 }}>{user.username}</h5>
         <Row gap={5}>
