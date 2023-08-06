@@ -1,3 +1,5 @@
+import convertDate from "../utils/convertDate.js";
+
 export default class NftDto {
   id;
   name;
@@ -14,7 +16,7 @@ export default class NftDto {
     this.id = model._id;
     this.name = model.name;
     this.img = process.env.API_URL + "/" + model._id + "/" + model.img;
-    this.created = model.created;
+    this.created = convertDate(model.created);
     this.createdBy = model.createdBy;
     this.owner = model.owner;
     this.description = model.description;

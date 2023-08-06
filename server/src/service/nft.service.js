@@ -6,6 +6,7 @@ import walletService from './wallet.service.js';
 import UserDto from '../dtos/user.dto.js';
 import path from 'path'
 import fs from 'fs';
+import NftDto from '../dtos/nft.dto.js';
 
 class NftService {
   async create(name, img, userId, description, categorie, tags, price) {
@@ -59,6 +60,12 @@ class NftService {
     nft.save();
 
     return nft._id;
+  }
+  
+  async getNft(id) {
+    const nft = await nftModel.findById(id);
+
+    return new NftDto(nft);
   }
 }
 

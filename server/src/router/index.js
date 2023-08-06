@@ -74,5 +74,10 @@ router.post('/nft/buy',
   authMiddleware,
   nftController.buy
 );
+router.post('/nft/getNft',
+  body('id').isString(),
+  authMiddleware,
+  nftController.getNft
+);
 
 export default router

@@ -24,6 +24,11 @@ class NftController {
 
   async buy(req, res, next) {
     try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return next(ApiError.BadRequest('Validation error', errors.array()));
+      }
+
       const user = req.user;
       const { id } = req.body;
 
@@ -32,6 +37,23 @@ class NftController {
       return res.json(nftId);
     } catch (e) {
       next(e);
+    }
+  }
+
+  async getNft(req, res, next) {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return next(ApiError.BadRequest('Validation error', errors.array()));
+      }
+
+      const { id } = req.body;
+
+      const nftData = await nftService.getNft(id);
+
+      return res.json(nftData);
+    } catch (e) {
+      next(e)
     }
   }
 }
