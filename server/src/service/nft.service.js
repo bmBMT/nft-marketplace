@@ -29,9 +29,7 @@ class NftService {
     user.nft.owned.push(nft.id);
     user.save();
 
-    const userData = new UserDto(user)
-
-    return userData;
+    return nft._id;
   }
 
   async buy(id, userId) {
@@ -60,25 +58,7 @@ class NftService {
     nft.owner = userId;
     nft.save();
 
-    const userData = new UserDto(user)
-
-    return userData;
-  }
-
-  async changePrice(id, price, userId) {
-    const nft = await nftModel.findById(id);
-    const user = await userModel.findById(userId);
-
-    if (!user.nft.owned.includes(id)) {
-      throw ApiError.BadRequest('This nft does not belong to the user');
-    }
-
-    nft.price = price;
-    nft.save();
-
-    const userData = new UserDto(user)
-
-    return userData;
+    return nft._id;
   }
 }
 

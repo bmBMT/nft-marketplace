@@ -14,9 +14,9 @@ class NftController {
       const { name, description, categorie, tags, price } = req.body;
       const { img } = req.files;
 
-      const userData = await nftService.create(name, img, user.id, description, categorie, tags, price);
+      const nftId = await nftService.create(name, img, user.id, description, categorie, tags, price);
 
-      return res.json(userData);
+      return res.json(nftId);
     } catch (e) {
       next(e);
     }
@@ -27,22 +27,9 @@ class NftController {
       const user = req.user;
       const { id } = req.body;
 
-      const nftData = await nftService.buy(id, user.id);
+      const nftId = await nftService.buy(id, user.id);
 
-      return res.json(nftData);
-    } catch (e) {
-      next(e);
-    }
-  }
-
-  async changePrice(req, res, next) {
-    try {
-      const user = req.user;
-      const { id, price } = req.body;
-
-      const nftData = await nftService.changePrice(id, price, user.id);
-
-      return res.json(nftData);
+      return res.json(nftId);
     } catch (e) {
       next(e);
     }

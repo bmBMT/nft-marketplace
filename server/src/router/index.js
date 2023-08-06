@@ -69,7 +69,10 @@ router.post('/nft/create',
   body('price').isNumeric(),
   nftController.create
 );
-router.post('/nft/buy', authMiddleware, nftController.buy);
-router.post('/nft/changePrice', authMiddleware, nftController.changePrice);
+router.post('/nft/buy',
+  body('id').isString(),
+  authMiddleware,
+  nftController.buy
+);
 
 export default router

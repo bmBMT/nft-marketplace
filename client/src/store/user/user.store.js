@@ -35,6 +35,14 @@ export default class UserStore {
     this.user.avatar = avatarLink;
   }
 
+  pushToCreatedNft(nftId) {
+    this.user.nft.created.push(nftId);
+  }
+
+  pushToCreatedNft(nftId) {
+    this.user.nft.owned.push(nftId);
+  }
+
   async login(email, password) {
     try {
       const response = await AuthService.login(email, password);
@@ -107,7 +115,8 @@ export default class UserStore {
   async createNft(name, img, description, tags, price) {
     try {
       const response = await NftService.create(name, img, description, tags, price);
-      this.setUser(response.data);
+      this.pushToCreatedNft(response.data);
+      this.pushToOwnedNft(response.data);
     } catch (e) {
       return e.response?.data?.message;
     }
@@ -116,15 +125,7 @@ export default class UserStore {
   async buyNft(id) {
     try {
       const response = await NftService.buy(id);
-      this.user = response.data;
-    } catch (e) {
-      return e.response?.data?.message;
-    }
-  }
-
-  async changeNftPrice(id, price) {
-    try {
-      await NftService.changePrice(id, price);
+      this.pushToOwnedNft(response.data);
     } catch (e) {
       return e.response?.data?.message;
     }
