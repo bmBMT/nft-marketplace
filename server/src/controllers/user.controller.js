@@ -60,7 +60,7 @@ class UserController {
       const user = req.user;
       const { nftId } = req.body;
 
-      const avatarLink = await userService.changeAvatar(nftId, user.id);
+      const { avatarLink } = await userService.changeAvatar(nftId, user.id);
 
       return res.json(avatarLink)
     } catch (e) {

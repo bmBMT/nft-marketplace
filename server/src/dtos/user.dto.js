@@ -2,7 +2,7 @@ export default class UserDto {
   id;
   username;
   email;
-  img;
+  avatar;
   placeholder;
   followers;
   bio;
@@ -15,7 +15,7 @@ export default class UserDto {
     this.id = model._id;
     this.username = model.username;
     this.email = model.email;
-    this.img = process.env.API_URL + "/" + model.img;
+    this.avatar = process.env.API_URL + "/" + model.avatar.path;
     this.placeholder = process.env.API_URL + "/" + model.placeholder.path;
     this.followers = model.followers;
     this.bio = model.bio;

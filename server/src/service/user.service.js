@@ -69,12 +69,13 @@ class UserService {
     const user = await UserModel.findById(userId);
     const nft = await NftModel.findById(nftId);
 
-    const avatar = generateNftPicturePath(nft);
-    user.img = avatar;
+    const avatarPath = generateNftPicturePath(nft);
+    user.avatar.nftId = nftId;
+    user.avatar.path = avatarPath;
     user.save();
 
-    const avatarLink = process.env.API_URL + "/" + user.img;
-    return avatarLink;
+    const avatarLink = process.env.API_URL + "/" + user.avatar.path;
+    return { avatarLink, avatarPath };
   }
 
   async changePlaceholder(nftId, userId) {

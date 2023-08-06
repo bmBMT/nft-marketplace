@@ -4,7 +4,10 @@ const UserSchema = new Schema({
   username: { type: String, unique: true, required: true },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
-  img: { type: String, required: true },
+  avatar: {
+    nftId: { type: Schema.Types.ObjectId, ref: 'Nft', default: null },
+    path: { type: String, default: "default/avatar.webp" }
+  },
   placeholder: {
     nftId: { type: Schema.Types.ObjectId, ref: 'Nft', default: null },
     path: { type: String, default: "default/placeholder.webp" }

@@ -18,11 +18,9 @@ class UserService {
       throw ApiError.BadRequest('This email is already taken')
     }
 
-    const img = "default/avatar.webp";
-
     const hashPassword = await bcrypt.hash(password, 3);
 
-    const user = await UserModel.create({ username, email, password: hashPassword, img })
+    const user = await UserModel.create({ username, email, password: hashPassword })
 
     const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({ ...userDto });

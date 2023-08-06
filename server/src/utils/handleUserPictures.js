@@ -15,6 +15,20 @@ export default async function (user) {
     placeholder.path = "default/placeholder.webp";
   }
 
+  const avatar = user.avatar;
+
+  if (avatar.nftId !== null) {
+    if (!user.nft.owned.includes(avatar.nftId)) {
+      avatar.nftId = null;
+      avatar.path = "default/avatar.webp";
+    } else {
+      const { avatarPath } = await userService.changeAvatar(avatar.nftId, user._id);
+      avatar.path = avatarPath;
+    }
+  } else {
+    avatar.path = "default/avatar.webp";
+  }
+
   user.save()
 
   return user;
