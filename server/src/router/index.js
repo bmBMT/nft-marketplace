@@ -43,6 +43,12 @@ router.post(
   body('nftId').isString(),
   userController.changeAvatar
 );
+router.post(
+  '/user/changePlaceholder',
+  authMiddleware,
+  body('nftId').isString(),
+  userController.changePlaceholder
+);
 
 // wallet
 router.post('/wallet/increment',

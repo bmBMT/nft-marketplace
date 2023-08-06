@@ -14,11 +14,9 @@ class NftController {
       const { name, description, categorie, tags, price } = req.body;
       const { img } = req.files;
 
-      console.log(img);
+      const userData = await nftService.create(name, img, user.id, description, categorie, tags, price);
 
-      // const userData = await nftService.create(name, img, user.id, description, categorie, tags, price);
-
-      // return res.json(userData);
+      return res.json(userData);
     } catch (e) {
       next(e);
     }

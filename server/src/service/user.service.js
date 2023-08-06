@@ -75,6 +75,19 @@ class UserService {
     const avatarLink = process.env.API_URL + "/" + user.img;
     return avatarLink;
   }
+
+  async changePlaceholder(nftId, userId) {
+    const user = await UserModel.findById(userId);
+    const nft = await NftModel.findById(nftId);
+
+    const placeholderPath = nft.name.split(' ').join('_') + "/" + nft.img;
+    user.placeholder.nftId = nftId;
+    user.placeholder.path = placeholderPath;
+    user.save();
+
+    const placeholderLink = process.env.API_URL + "/" + user.placeholder.path;
+    return placeholderLink;
+  }
 }
 
 export default new UserService();
