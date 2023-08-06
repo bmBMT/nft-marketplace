@@ -4,7 +4,6 @@ import tokenService from './token.service.js'
 import UserDto from '../dtos/user.dto.js'
 import ApiError from '../exceptions/api.error.js'
 import walletService from './wallet.service.js'
-import WalletDto from '../dtos/wallet.dto.js'
 import handleUserPictures from '../utils/handleUserPictures.js'
 
 class UserService {
@@ -18,11 +17,9 @@ class UserService {
       throw ApiError.BadRequest('This email is already taken')
     }
 
-    const img = "default/avatar.webp";
-
     const hashPassword = await bcrypt.hash(password, 3);
 
-    const user = await UserModel.create({ username, email, password: hashPassword, img })
+    const user = await UserModel.create({ username, email, password: hashPassword })
 
     const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({ ...userDto });

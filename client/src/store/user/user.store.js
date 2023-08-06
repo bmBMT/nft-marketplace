@@ -32,7 +32,7 @@ export default class UserStore {
   }
 
   setAvatar(avatarLink) {
-    this.user.img = avatarLink;
+    this.user.avatar = avatarLink;
   }
 
   async login(email, password) {

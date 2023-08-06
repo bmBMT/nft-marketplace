@@ -1,3 +1,3 @@
 export default function (imgObj) {
-  return imgObj.name.split(' ').join('_') + "/" + imgObj.img;
+  return imgObj._id + "/" + imgObj.img;
 }

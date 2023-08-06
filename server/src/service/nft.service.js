@@ -19,7 +19,7 @@ class NftService {
     const nft = await nftModel.create({ name, img: fileName, createdBy: userId, owner: userId, description, categorie, tags, price })
 
     const __dirname = path.resolve();
-    const folderName = name.split(' ').join('_');
+    const folderName = nft._id;
     const dirpath = path.resolve(__dirname, 'src', 'static', `${folderName}`);
     fs.mkdirSync(dirpath, { recursive: true })
     img.mv(path.resolve(dirpath, fileName))

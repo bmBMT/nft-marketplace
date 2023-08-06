@@ -64,7 +64,7 @@ const ArtistPage = () => {
       <main>
         <ProfileImage
           isLoading={isLoading}
-          avatar={userData.img}
+          avatar={userData.avatar}
           placeholder={userData.placeholder}
         />
         <ArtistInfo
