@@ -8,7 +8,7 @@ import { memo } from 'react'
 
 const ProfileImage = ({ isLoading, avatar }) => {
   const { isDesktop, isTablet, isPhone } = useDeviceWidth()
-  const imgHeight = isDesktop ? 320 : isTablet ? 280 : 250
+  const imgHeight = isDesktop ? 450 : isTablet ? 320 : 250
 
   return (
     <div style={{ height: imgHeight + 70 }}>
