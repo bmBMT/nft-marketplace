@@ -4,7 +4,6 @@ import tokenService from './token.service.js'
 import UserDto from '../dtos/user.dto.js'
 import ApiError from '../exceptions/api.error.js'
 import walletService from './wallet.service.js'
-import WalletDto from '../dtos/wallet.dto.js'
 import handleUserPictures from '../utils/handleUserPictures.js'
 
 class UserService {
