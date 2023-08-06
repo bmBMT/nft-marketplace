@@ -5,6 +5,10 @@ const UserSchema = new Schema({
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
   img: { type: String, required: true },
+  placeholder: {
+    nftId: { type: Schema.Types.ObjectId, ref: 'Nft', default: null },
+    path: { type: String, default: "default/placeholder.webp" }
+  },
   followers: { type: Number, default: 0 },
   bio: { type: String, default: '' },
   links: {

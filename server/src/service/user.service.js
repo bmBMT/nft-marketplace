@@ -3,6 +3,8 @@ import UserDto from '../dtos/user.dto.js';
 import ApiError from '../exceptions/api.error.js';
 import NftDto from '../dtos/nft.dto.js';
 import NftModel from '../models/nft.model.js';
+import handleUserPictures from '../utils/handleUserPictures.js';
+import generateNftPicturePath from '../utils/generateNftPicturePath.js';
 
 class UserService {
   async getUser(id) {
@@ -23,7 +25,9 @@ class UserService {
       "collection": []
     };
 
-    const userDto = new UserDto(user)
+    const handledUser = await handleUserPictures(user);
+
+    const userDto = new UserDto(handledUser)
     return { user: userDto, nfts };
   }
 
@@ -65,12 +69,25 @@ class UserService {
     const user = await UserModel.findById(userId);
     const nft = await NftModel.findById(nftId);
 
-    const avatar = nft.name.split(' ').join('_') + "/" + nft.img;
+    const avatar = generateNftPicturePath(nft);
     user.img = avatar;
     user.save();
 
     const avatarLink = process.env.API_URL + "/" + user.img;
     return avatarLink;
+  }
+
+  async changePlaceholder(nftId, userId) {
+    const user = await UserModel.findById(userId);
+    const nft = await NftModel.findById(nftId);
+
+    const placeholderPath = generateNftPicturePath(nft);
+    user.placeholder.nftId = nftId;
+    user.placeholder.path = placeholderPath;
+    user.save();
+
+    const placeholderLink = process.env.API_URL + "/" + user.placeholder.path;
+    return { placeholderLink, placeholderPath };
   }
 }
 

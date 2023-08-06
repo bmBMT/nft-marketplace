@@ -62,7 +62,11 @@ const ArtistPage = () => {
   return (
     userData.id && (
       <main>
-        <ProfileImage isLoading={isLoading} avatar={userData.img} />
+        <ProfileImage
+          isLoading={isLoading}
+          avatar={userData.img}
+          placeholder={userData.placeholder}
+        />
         <ArtistInfo
           isButtonDisabled={isButtonDisabled}
           isLoading={isLoading}

@@ -67,6 +67,24 @@ class UserController {
       next(e)
     }
   }
+
+  async changePlaceholder(req, res, next) {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return next(ApiError.BadRequest('Validation error', errors.array()));
+      }
+
+      const user = req.user;
+      const { nftId } = req.body;
+
+      const { placeholderLink } = await userService.changePlaceholder(nftId, user.id);
+
+      return res.json(placeholderLink)
+    } catch (e) {
+      next(e)
+    }
+  }
 }
 
 export default new UserController;
