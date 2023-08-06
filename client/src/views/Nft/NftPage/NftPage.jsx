@@ -12,12 +12,19 @@ const NftPage = () => {
   const { id } = useParams()
   const [nftData, setNftData] = useState({})
   const [creatorData, setCreatorData] = useState({})
+  const [ownerData, setOwnerData] = useState({})
   const { isDesktop, isTablet } = useDeviceWidth()
   const imgHeight = isDesktop ? 600 : isTablet ? 420 : 320
 
   const [fetchNft, isLoading, error] = useFetching(async (id) => {
     const nftResponse = await NftService.getNft(id)
     const creatorResponse = await UserService.getUser(nftResponse.data.createdBy)
+    if (nftResponse.data.createdBy !== nftResponse.data.owner) {
+      const ownerResponse = await UserService.getUser(nftResponse.data.owner)
+      setOwnerData(ownerResponse.data)
+    } else {
+      setOwnerData(creatorResponse.data)
+    }
     setNftData(nftResponse.data)
     setCreatorData(creatorResponse.data)
   })
@@ -37,7 +44,12 @@ const NftPage = () => {
       ) : (
         <Skeleton baseColor="#232323" height={imgHeight} />
       )}
-      <NftInfo isLoading={isLoading} nft={nftData} creator={creatorData.user} />
+      <NftInfo
+        isLoading={isLoading}
+        nft={nftData}
+        creator={creatorData.user}
+        owner={ownerData.user}
+      />
     </main>
   )
 }
