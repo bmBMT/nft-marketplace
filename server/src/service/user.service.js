@@ -69,6 +69,10 @@ class UserService {
     const user = await UserModel.findById(userId);
     const nft = await NftModel.findById(nftId);
 
+    if (!user.nft.owned.includes(nftId)) {
+      throw ApiError.BadRequest("This nft does not belong to the user")
+    }
+
     const avatarPath = generateNftPicturePath(nft);
     user.avatar.nftId = nftId;
     user.avatar.path = avatarPath;
@@ -81,6 +85,10 @@ class UserService {
   async changePlaceholder(nftId, userId) {
     const user = await UserModel.findById(userId);
     const nft = await NftModel.findById(nftId);
+
+    if (!user.nft.owned.includes(nftId)) {
+      throw ApiError.BadRequest("This nft does not belong to the user")
+    }
 
     const placeholderPath = generateNftPicturePath(nft);
     user.placeholder.nftId = nftId;
