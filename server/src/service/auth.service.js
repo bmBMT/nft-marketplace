@@ -4,6 +4,8 @@ import tokenService from './token.service.js'
 import UserDto from '../dtos/user.dto.js'
 import ApiError from '../exceptions/api.error.js'
 import walletService from './wallet.service.js'
+import WalletDto from '../dtos/wallet.dto.js'
+import handleUserPictures from '../utils/handleUserPictures.js'
 
 class UserService {
   async registration(username, email, password) {
@@ -40,7 +42,10 @@ class UserService {
     if (!isPassEquals) {
       throw ApiError.BadRequest('Incorrect password')
     }
-    const userDto = new UserDto(user);
+
+    const handledUser = handleUserPictures(user);
+
+    const userDto = new UserDto(handledUser);
     const tokens = tokenService.generateTokens({ ...userDto });
 
     await tokenService.saveToken(userDto.id, tokens.refreshToken);

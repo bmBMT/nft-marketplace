@@ -3,6 +3,7 @@ import UserDto from '../dtos/user.dto.js';
 import ApiError from '../exceptions/api.error.js';
 import NftDto from '../dtos/nft.dto.js';
 import NftModel from '../models/nft.model.js';
+import handleUserPictures from '../utils/handleUserPictures.js';
 
 class UserService {
   async getUser(id) {
@@ -23,7 +24,9 @@ class UserService {
       "collection": []
     };
 
-    const userDto = new UserDto(user)
+    const handledUser = handleUserPictures(user);
+
+    const userDto = new UserDto(handledUser)
     return { user: userDto, nfts };
   }
 
