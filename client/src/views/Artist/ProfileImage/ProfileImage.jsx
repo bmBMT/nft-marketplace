@@ -1,12 +1,11 @@
 import ImageBackground from '@/components/ImageBackground/ImageBackground'
-import placeholder from '@/assets/images/artistPlaceholder.png'
 import Avatar from '@/components/Avatar/Avatar'
 import Container from '@/components/Container/Container'
 import { useDeviceWidth } from '@/utils/hooks/useDeviceWidth'
 import Skeleton from 'react-loading-skeleton'
 import { memo } from 'react'
 
-const ProfileImage = ({ isLoading, avatar }) => {
+const ProfileImage = ({ isLoading, avatar, placeholder }) => {
   const { isDesktop, isTablet, isPhone } = useDeviceWidth()
   const imgHeight = isDesktop ? 450 : isTablet ? 320 : 250
 
