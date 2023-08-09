@@ -26,8 +26,8 @@ const MoreNftsFromCreator = ({ isLoading, nfts, creator }) => {
                 <NftSkeletonCard />
               </>
             ) : (
-              nfts?.created.map((nft) => (
-                <NftCard key={nft.id} nft={nft} user={creator} backgroundColor="#3B3B3B" />
+              nfts.map((nft) => (
+                <NftCard key={nft.id} nft={nft} backgroundColor="#3B3B3B" />
               ))
             )}
           </TabPane>
@@ -75,8 +75,8 @@ const MoreNftsFromCreator = ({ isLoading, nfts, creator }) => {
                 <NftSkeletonCard />
               </>
             ) : (
-              nfts?.created.map((nft) => (
-                <NftCard key={nft.id} nft={nft} user={creator} backgroundColor="#3B3B3B" />
+              nfts.map((nft) => (
+                <NftCard key={nft.id} nft={nft} backgroundColor="#3B3B3B" />
               ))
             )}
           </TabPane>

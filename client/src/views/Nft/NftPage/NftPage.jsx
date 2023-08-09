@@ -4,7 +4,7 @@ import { useDeviceWidth } from '@/utils/hooks/useDeviceWidth'
 import { useFetching } from '@/utils/hooks/useFetching'
 import { useEffect, useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import NftInfo from '../NftInfo/NftInfo'
 import UserService from '@/services/user/user.service'
 import MoreNftsFromCreator from '../MoreNftsFromCreator/MoreNftsFromCreator'
@@ -12,22 +12,16 @@ import MoreNftsFromCreator from '../MoreNftsFromCreator/MoreNftsFromCreator'
 const NftPage = () => {
   const { id } = useParams()
   const [nftData, setNftData] = useState({})
-  const [creatorData, setCreatorData] = useState({})
-  const [ownerData, setOwnerData] = useState({})
+  const [creatorNfts, setCreatorNfts] = useState([])
   const { isDesktop, isTablet } = useDeviceWidth()
   const imgHeight = isDesktop ? 600 : isTablet ? 420 : 320
 
   const [fetchNft, isLoading, error] = useFetching(async (id) => {
     const nftResponse = await NftService.getNft(id)
-    const creatorResponse = await UserService.getUser(nftResponse.data.createdBy)
-    if (nftResponse.data.createdBy !== nftResponse.data.owner) {
-      const ownerResponse = await UserService.getUser(nftResponse.data.owner)
-      setOwnerData(ownerResponse.data)
-    } else {
-      setOwnerData(creatorResponse.data)
-    }
+    const creatorResponse = await UserService.getUser(nftResponse.data.creator.id)
+    
+    setCreatorNfts(creatorResponse.data.nfts.created)
     setNftData(nftResponse.data)
-    setCreatorData(creatorResponse.data)
   })
 
   useEffect(() => {
@@ -48,13 +42,13 @@ const NftPage = () => {
       <NftInfo
         isLoading={isLoading}
         nft={nftData}
-        creator={creatorData?.user}
-        owner={ownerData.user}
+        creator={nftData?.creator}
+        owner={nftData?.owner}
       />
       <MoreNftsFromCreator
         isLoading={isLoading}
-        creator={creatorData.user}
-        nfts={creatorData?.nfts}
+        creator={nftData?.creator}
+        nfts={creatorNfts}
       />
     </main>
   )

@@ -16,8 +16,23 @@ class NftService {
     }
 
     const fileName = new Date().getTime() + '.webp';
+    const user = await userModel.findById(userId);
+    const userInfo = {
+      _id: user._id,
+      avatar: user.avatar.path,
+      username: user.username
+    };
 
-    const nft = await nftModel.create({ name, img: fileName, createdBy: userId, owner: userId, description, categorie, tags, price })
+    const nft = await nftModel.create({
+      name,
+      img: fileName,
+      creator: userInfo,
+      owner: userInfo,
+      description,
+      categorie,
+      tags,
+      price
+    })
 
     const __dirname = path.resolve();
     const folderName = nft._id;
@@ -25,8 +40,7 @@ class NftService {
     fs.mkdirSync(dirpath, { recursive: true })
     img.mv(path.resolve(dirpath, fileName))
 
-    const user = await userModel.findById(userId);
-    user.nft.created.push(nft.id);
+    user.nft.createdData.push(nft.id);
     user.nft.owned.push(nft.id);
     user.save();
 
@@ -56,7 +70,11 @@ class NftService {
     owner.save();
     user.save();
 
-    nft.owner = userId;
+    nft.owner = {
+      _id: user._id,
+      avatar: user.avatar.path,
+      username: user.username
+    }
     nft.save();
 
     return nft._id;

@@ -4,8 +4,8 @@ export default class NftDto {
   id;
   name;
   img;
-  created;
-  createdBy;
+  createdDate;
+  creator;
   owner;
   description;
   categorie;
@@ -16,9 +16,17 @@ export default class NftDto {
     this.id = model._id;
     this.name = model.name;
     this.img = process.env.API_URL + "/" + model._id + "/" + model.img;
-    this.created = convertDate(model.created);
-    this.createdBy = model.createdBy;
-    this.owner = model.owner;
+    this.createdDate = convertDate(model.createdDate);
+    this.creator = {
+      id: model.creator._id,
+      avatar: process.env.API_URL + "/" + model.creator.avatar,
+      username: model.creator.username
+    };
+    this.owner = {
+      id: model.owner._id,
+      avatar: process.env.API_URL + "/" + model.owner.avatar,
+      username: model.owner.username
+    };
     this.description = model.description;
     this.categorie = model.categorie;
     this.tags = model.tags;
