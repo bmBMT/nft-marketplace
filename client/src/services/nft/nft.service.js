@@ -9,7 +9,7 @@ export default class NftService {
     return $api.post('/nft/buy', { id })
   }
 
-  static async changePrice(id, price) {
-    return $api.post('/nft/changePrice', { id, price })
+  static async getNft(id) {
+    return $api.post('/nft/getNft', { id })
   }
 }

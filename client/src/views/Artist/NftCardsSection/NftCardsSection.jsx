@@ -4,12 +4,12 @@ import TabPane from '@/components/Tabs/TabPane/TabPane'
 import Tabs from '@/components/Tabs/Tabs'
 import { memo } from 'react'
 
-const NftCardsSection = ({ isLoading, nfts, user }) => {
+const NftCardsSection = ({ isLoading, nfts }) => {
   return (
     <Tabs isLoading={isLoading} backgroundColor="#3b3b3b" topDivider={true}>
-      <TabPane title="Created" count={nfts.created.length}>
+      <TabPane title="Created" padding={80} count={nfts.created.length}>
         {!isLoading ? (
-          nfts.created.map((nft) => <NftCard key={nft.id} nft={nft} user={user} />)
+          nfts.created.map((nft) => <NftCard key={nft.id} nft={nft} backgroundColor="#2b2b2b" />)
         ) : (
           <>
             <NftSkeletonCard />
@@ -18,9 +18,9 @@ const NftCardsSection = ({ isLoading, nfts, user }) => {
           </>
         )}
       </TabPane>
-      <TabPane title="Owned" count={nfts.owned.length}>
+      <TabPane title="Owned" padding={80} count={nfts.owned.length}>
         {!isLoading ? (
-          nfts.owned.map((nft) => <NftCard key={nft.id} nft={nft} user={user} />)
+          nfts.owned.map((nft) => <NftCard key={nft.id} nft={nft} backgroundColor="#2b2b2b" />)
         ) : (
           <>
             <NftSkeletonCard />
@@ -29,7 +29,7 @@ const NftCardsSection = ({ isLoading, nfts, user }) => {
           </>
         )}
       </TabPane>
-      <TabPane title="Collection" count={nfts.collection.length}>
+      <TabPane title="Collection" padding={80} count={nfts.collection.length}>
         {/* TODO FOR AUCTION */}
       </TabPane>
     </Tabs>

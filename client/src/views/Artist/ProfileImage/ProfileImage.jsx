@@ -11,13 +11,20 @@ const ProfileImage = ({ isLoading, avatar, placeholder }) => {
 
   return (
     <div style={{ height: imgHeight + 70 }}>
-      {!isLoading ? (
-        <ImageBackground height={imgHeight} img={placeholder} gradient />
-      ) : (
+      {isLoading ? (
         <Skeleton baseColor="#232323" height={imgHeight} />
+      ) : (
+        <ImageBackground height={imgHeight} img={placeholder} gradient />
       )}
       <Container height={70}>
-        {!isLoading ? (
+        {isLoading ? (
+          <Skeleton
+            height={120}
+            width={120}
+            style={{ bottom: 50, marginLeft: isPhone && 'calc(50% - 60px)' }}
+            borderRadius={20}
+          />
+        ) : (
           <Avatar
             border={true}
             radius={20}
@@ -26,13 +33,6 @@ const ProfileImage = ({ isLoading, avatar, placeholder }) => {
             position="relative"
             bottom={50}
             margin={isPhone && 'auto'}
-          />
-        ) : (
-          <Skeleton
-            height={120}
-            width={120}
-            style={{ bottom: 50, marginLeft: isPhone && 'calc(50% - 60px)' }}
-            borderRadius={20}
           />
         )}
       </Container>

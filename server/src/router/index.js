@@ -65,11 +65,22 @@ router.post('/wallet/decrement',
 // nft
 router.post('/nft/create',
   authMiddleware,
+  body('name').isString(),
+  body('description').isString(),
   body('categorie').isString(),
+  // body('tags').isArray(),
   body('price').isNumeric(),
   nftController.create
 );
-router.post('/nft/buy', authMiddleware, nftController.buy);
-router.post('/nft/changePrice', authMiddleware, nftController.changePrice);
+router.post('/nft/buy',
+  body('id').isString(),
+  authMiddleware,
+  nftController.buy
+);
+router.post('/nft/getNft',
+  body('id').isString(),
+  authMiddleware,
+  nftController.getNft
+);
 
 export default router

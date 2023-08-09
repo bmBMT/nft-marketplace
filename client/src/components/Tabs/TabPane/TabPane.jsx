@@ -1,9 +1,9 @@
 import { memo } from 'react'
 import styles from './TabPane.module.scss'
 
-const TabPane = ({ children }) => {
+const TabPane = ({ children, padding }) => {
   return (
-      <div className={styles.tabPane}>{children}</div>
+      <div className={styles.tabPane} style={{ padding: `${padding}px 0` }}>{children}</div>
   )
 }
 

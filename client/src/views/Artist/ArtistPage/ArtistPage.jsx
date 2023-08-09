@@ -75,7 +75,7 @@ const ArtistPage = () => {
           unfollow={unfollow}
           isFollowed={isFollowed}
         />
-        <NftCardsSection isLoading={isLoading} nfts={userNfts} user={userData} />
+        <NftCardsSection isLoading={isLoading} nfts={userNfts} />
       </main>
     )
   )
