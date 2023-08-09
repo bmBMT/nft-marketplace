@@ -40,7 +40,7 @@ class NftService {
     fs.mkdirSync(dirpath, { recursive: true })
     img.mv(path.resolve(dirpath, fileName))
 
-    user.nft.createdData.push(nft.id);
+    user.nft.created.push(nft.id);
     user.nft.owned.push(nft.id);
     user.save();
 

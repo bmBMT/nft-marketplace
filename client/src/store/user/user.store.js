@@ -36,7 +36,7 @@ export default class UserStore {
   }
 
   pushToCreatedNft(nftId) {
-    this.user.nft.createdData.push(nftId);
+    this.user.nft.created.push(nftId);
   }
 
   pushToCreatedNft(nftId) {
