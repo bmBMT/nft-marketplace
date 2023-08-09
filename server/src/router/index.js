@@ -68,7 +68,7 @@ router.post('/nft/create',
   body('name').isString(),
   body('description').isString(),
   body('categorie').isString(),
-  body('tags').isArray(),
+  // body('tags').isArray(),
   body('price').isNumeric(),
   nftController.create
 );

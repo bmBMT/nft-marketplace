@@ -7,6 +7,7 @@ import Skeleton from 'react-loading-skeleton'
 import { useParams } from 'react-router-dom'
 import NftInfo from '../NftInfo/NftInfo'
 import UserService from '@/services/user/user.service'
+import MoreNftsFromCreator from '../MoreNftsFromCreator/MoreNftsFromCreator'
 
 const NftPage = () => {
   const { id } = useParams()
@@ -47,8 +48,13 @@ const NftPage = () => {
       <NftInfo
         isLoading={isLoading}
         nft={nftData}
-        creator={creatorData.user}
+        creator={creatorData?.user}
         owner={ownerData.user}
+      />
+      <MoreNftsFromCreator
+        isLoading={isLoading}
+        creator={creatorData.user}
+        nfts={creatorData?.nfts}
       />
     </main>
   )

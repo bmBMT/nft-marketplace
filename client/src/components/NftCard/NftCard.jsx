@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import styles from './NftCard.module.scss'
 
-const NftCard = ({ nft, user }) => {
+const NftCard = ({ nft, user, backgroundColor }) => {
   const categorieClassNames = {
     art: styles.staticImg,
   }
 
   return (
-    <Link to={`/nft/${nft.id}`} className={`${styles.card} ${categorieClassNames[nft.categorie]}`}>
+    <Link to={`/nft/${nft.id}`} className={`${styles.card} ${categorieClassNames[nft.categorie]}`} style={{ backgroundColor }}>
       <div className={styles.imgContainer}>
         <div className={styles.image} style={{ backgroundImage: `url(${nft.img})` }} />
       </div>
