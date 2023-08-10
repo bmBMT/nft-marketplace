@@ -16,7 +16,7 @@ const NftInfo = ({ nft, creator, owner, isLoading }) => {
     <Container justifyContent="space-between" alignItems="flex-start" padding="40px 0">
       <Row gap={contentRowGap}>
         <Col gap={contentColGap} width="100%">
-          <MainInfo isLoading={isLoading} name={nft.name} created={nft.created} />
+          <MainInfo isLoading={isLoading} name={nft.name} created={nft.createdDate} />
           {isPhone && <div>AUCTION TODO</div>}
           <Row gap="20px 50px" flexWrap="wrap">
             <Artist
