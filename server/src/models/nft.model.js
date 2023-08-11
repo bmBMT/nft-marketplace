@@ -7,12 +7,12 @@ const NftSchema = new Schema({
   creator: {
     _id: { type: Schema.Types.ObjectId, ref: 'User' },
     avatar: { type: String, required: true },
-    username: { type: String, required: true }
+    username: { type: String, required: true },
   },
   owner: {
     _id: { type: Schema.Types.ObjectId, ref: 'User' },
     avatar: { type: String, required: true },
-    username: { type: String, required: true }
+    username: { type: String, required: true },
   },
   description: { type: String, required: true },
   categorie: { type: String, required: true },

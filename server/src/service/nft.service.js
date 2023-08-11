@@ -6,7 +6,6 @@ import walletService from './wallet.service.js';
 import path from 'path'
 import fs from 'fs';
 import NftDto from '../dtos/nft.dto.js';
-import userService from './user.service.js';
 
 class NftService {
   async create(name, img, userId, description, categorie, tags, price) {
@@ -63,7 +62,7 @@ class NftService {
     walletService.increment(owner._id, nft.price);
     walletService.decrement(userId, nft.price);
 
-    owner.nft.owned = owner.nft.owned.filter(nftid => nftid != id);
+    owner.nft.owned = owner.nft.owned.filter(nftid => nftid !== id);
     owner.sales.value = Number((owner.sales.value + nft.price).toFixed(5));
     owner.sales.soldCount += 1;
     user.nft.owned.push(nft._id);
@@ -84,6 +83,12 @@ class NftService {
     const nft = await nftModel.findById(id);
 
     return new NftDto(nft);
+  }
+
+  async getNfts(arrayOfId) {
+    const nfts = await nftModel.find({ _id: { $in: arrayOfId } });
+
+    return nfts.map((nft) => new NftDto(nft));
   }
 }
 

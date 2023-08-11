@@ -5,6 +5,7 @@ import walletController from '../controllers/wallet.controller.js';
 import nftController from '../controllers/nft.controller.js';
 import authController from '../controllers/auth.controller.js';
 import userController from '../controllers/user.controller.js';
+import CollectionController from '../controllers/collection.controller.js'
 
 const router = new Router();
 
@@ -81,6 +82,23 @@ router.post('/nft/getNft',
   body('id').isString(),
   authMiddleware,
   nftController.getNft
+);
+router.post('/nft/getNfts',
+  body('ids').isArray(),
+  authMiddleware,
+  nftController.getNfts
+);
+
+// collection
+router.post('/collection/create',
+  body('name').isString(),
+  // body('nfts').isArray(),
+  authMiddleware,
+  CollectionController.create
+);
+router.post('/collection/getCollection',
+  body('id').isString(),
+  CollectionController.getCollection
 );
 
 export default router
