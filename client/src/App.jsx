@@ -7,6 +7,7 @@ import Router from './components/Router/Router'
 import NavigationBar from './views/Navigation/NavigationBar/NavigationBar'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Scrollbars from 'react-custom-scrollbars-2'
+import Footer from './views/Footer/Footer'
 
 const App = () => {
   const { UserStore } = useContext(Context)
@@ -27,6 +28,7 @@ const App = () => {
       <BrowserRouter>
         <NavigationBar />
         <Router />
+        <Footer/>
       </BrowserRouter>
     </Scrollbars>
   )

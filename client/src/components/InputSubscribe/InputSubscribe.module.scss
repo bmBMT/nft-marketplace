@@ -1,0 +1,103 @@
+@import '@scss/variables';
+.formSub {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px;
+}
+
+.inputSub {
+  display: block;
+  box-sizing: border-box;
+
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 20px;
+  padding: 16px 177px 16px 20px;
+  height: 60px;
+  color: $bg-color;
+  outline: none;
+  border: 0px solid $secondary-bg;
+  width: 100%;
+
+  &::placeholder {
+    color: $bg-color;
+  }
+
+  &.withIcon {
+    padding-left: 46px;
+  }
+
+  &.password {
+    padding-right: 46px;
+  }
+}
+
+.buttonSub {
+  position: absolute;
+  box-sizing: border-box;
+  top: 0px;
+  right: 0px;
+
+  border: 0px solid $btn-bg;
+  background-color: $btn-bg;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: 0 50px;
+
+  & img {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background-color: #a159ff81;
+  }
+}
+
+.imgSub {
+  display: none;
+}
+
+@media (max-width: 670px) {
+  .formSub {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: static;
+    justify-content: center;
+    max-width: 670px;
+  }
+
+  .inputSub {
+    padding: 16px 20px 16px 20px;
+    height: 46px;
+
+    &:focus {
+      border: 2px solid $btn-bg;
+    }
+
+    &.error {
+      border: 2px solid $error-color;
+      color: $error-color;
+    }
+  }
+
+  .buttonSub {
+    position: static;
+    height: 46px;
+
+  }
+
+  .imgSub {
+    display: inline;
+  }
+}
