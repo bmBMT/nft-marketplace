@@ -5,6 +5,7 @@ import NftPage from "@/views/Nft/NftPage/NftPage";
 import RankingsPage from "@/views/Rankings/RankingsPage/RankingsPage";
 import LoginPage from "@/views/UserAuth/Login/LoginPage/LoginPage";
 import SignUpPage from "@/views/UserAuth/SignUp/SignUpPage/SignUpPage";
+import CollectionPage from '@/views/Collection/CollectionPage.jsx'
 
 export default [
   { path: "/", element: HomePage },
@@ -14,4 +15,5 @@ export default [
   { path: "/nft/:id", element: NftPage },
   { path: "/marketplace", element: MarketplacePage },
   { path: "/rankings", element: RankingsPage },
+  { path: "/collection/:id", element: CollectionPage }
 ]

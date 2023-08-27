@@ -56,6 +56,24 @@ class NftController {
       next(e)
     }
   }
+
+  async getNfts(req, res, next) {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return next(ApiError.BadRequest('Validation error', errors.array()));
+      }
+
+      const { ids } = req.body;
+
+      const nftsData = await nftService.getNfts(ids);
+
+      return res.json(nftsData);
+    } catch (e) {
+      next(e)
+    }
+  }
+
 }
 
 export default new NftController;

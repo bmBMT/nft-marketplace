@@ -1,0 +1,15 @@
+.artistInfo {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.artistInfo > * {
+  font-family: 'Space Mono', monospace;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}

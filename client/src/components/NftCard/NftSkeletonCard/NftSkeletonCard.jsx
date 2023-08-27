@@ -1,6 +1,7 @@
 import { useDeviceWidth } from '@/utils/hooks/useDeviceWidth'
 import Skeleton from 'react-loading-skeleton'
 import styles from '../NftCard.module.scss'
+import UserCardInfo from '@/components/UserCardInfo/UserCardInfo.jsx'
 
 const NftSkeletonCard = ({ isAuction = false }) => {
   const { isPhone } = useDeviceWidth()
@@ -17,13 +18,7 @@ const NftSkeletonCard = ({ isAuction = false }) => {
         height={22}
       />
       <Skeleton style={{ position: 'absolute', left: 60, bottom: 95.58 }} width={80} />
-      <Skeleton
-        style={{ position: 'absolute', left: 24, bottom: 92.58 }}
-        width={24}
-        height={24}
-        borderRadius={20}
-      />
-      <Skeleton style={{ position: 'absolute', left: 24, bottom: 48 }} width={40} />
+      <UserCardInfo loader />
       <Skeleton style={{ position: 'absolute', left: 24, bottom: 24 }} width={80} />
       {isAuction && (
         <>
