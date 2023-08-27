@@ -34,7 +34,7 @@ class CollectionController {
 
       return res.json(collectionData);
     } catch (e) {
-
+      next(e);
     }
   }
 }

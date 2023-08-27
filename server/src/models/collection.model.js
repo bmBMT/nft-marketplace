@@ -7,12 +7,7 @@ const CollectionModel = new Schema({
     avatar: { type: String, required: true },
     username: { type: String, required: true }
   },
-  nfts: { type: [Schema.Types.ObjectId], ref: 'Nft', default: [] },
-  expireAt: {
-    type: Date,
-    default: new Date(new Date().valueOf()),
-    expires: 86400
-  }
+  nfts: { type: [Schema.Types.ObjectId], ref: 'Nft', default: [] }
 }, {timestamps: true})
 
 export default model('Collection', CollectionModel)
