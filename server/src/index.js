@@ -3,10 +3,10 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose'
-import router from './router/index.js'
 import errorMiddleware from './middlewares/error.middleware.js';
 import fileUpload from 'express-fileupload';
 import path from 'path';
+import router from './router/index.js'
 
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();

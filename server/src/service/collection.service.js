@@ -22,7 +22,6 @@ class CollectionService {
     }
 
     const collectionDto = new CollectionDto(collection);
-
     const nftsDto = await NftService.getNfts(collectionDto.nfts);
 
     return { collection: collectionDto, nfts: nftsDto };

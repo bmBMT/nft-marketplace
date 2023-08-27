@@ -1,6 +1,6 @@
 import userService from "../service/user.service.js";
 
-export default async function (user) {
+export default async function HandleUserPictures(user) {
   const placeholder = user.placeholder;
 
   if (placeholder.nftId !== null) {

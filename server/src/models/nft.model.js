@@ -15,7 +15,7 @@ const NftSchema = new Schema({
     username: { type: String, required: true },
   },
   description: { type: String, required: true },
-  categorie: { type: String, required: true },
+  category: { type: String, required: true },
   tags: { type: [String], required: true },
   price: { type: Number, required: true },
 })

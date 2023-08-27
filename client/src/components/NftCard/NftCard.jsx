@@ -3,12 +3,12 @@ import styles from './NftCard.module.scss'
 import UserCardInfo from '@/components/UserCardInfo/UserCardInfo.jsx'
 
 const NftCard = ({ nft, backgroundColor }) => {
-  const categorieClassNames = {
+  const categoryClassNames = {
     art: styles.staticImg,
   }
 
   return (
-    <Link to={`/nft/${nft.id}`} className={`${styles.card} ${categorieClassNames[nft.categorie]}`} style={{ backgroundColor }}>
+    <Link to={`/nft/${nft.id}`} className={`${styles.card} ${categoryClassNames[nft.category]}`} style={{ backgroundColor }}>
       <div className={styles.imgContainer}>
         <div className={styles.image} style={{ backgroundImage: `url(${nft.img})` }} />
       </div>

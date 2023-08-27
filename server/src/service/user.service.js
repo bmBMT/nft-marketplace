@@ -3,8 +3,8 @@ import UserDto from '../dtos/user.dto.js';
 import ApiError from '../exceptions/api.error.js';
 import NftDto from '../dtos/nft.dto.js';
 import NftModel from '../models/nft.model.js';
-import handleUserPictures from '../utils/handleUserPictures.js';
 import generateNftPicturePath from '../utils/generateNftPicturePath.js';
+import HandleUserPictures from '../utils/handlerUserPictures.js'
 
 class UserService {
   async getUser(id) {
@@ -20,12 +20,12 @@ class UserService {
     const ownedNftsDto = ownedNfts.map((nft) => new NftDto(nft));
 
     const nfts = {
-      "created": createdNftsDto,
-      "owned": ownedNftsDto,
-      "collection": []
+      created: createdNftsDto,
+      owned: ownedNftsDto,
+      collection: []
     };
 
-    const handledUser = await handleUserPictures(user);
+    const handledUser = await HandleUserPictures(user);
 
     const userDto = new UserDto(handledUser)
     return { user: userDto, nfts };
@@ -44,8 +44,7 @@ class UserService {
     user.save();
     followingUser.save();
 
-    const userDto = new UserDto(user)
-    return userDto;
+    return new UserDto(user);
   }
 
   async unfollow(id, userId) {
@@ -56,13 +55,12 @@ class UserService {
       throw ApiError.BadRequest('User aleady unfollowed');
     }
 
-    user.following = user.following.filter(_id => _id != id);
+    user.following = user.following.filter(_id => _id !== id);
     followingUser.followers -= 1;
     user.save();
     followingUser.save();
 
-    const userDto = new UserDto(user)
-    return userDto;
+    return new UserDto(user);
   }
 
   async changeAvatar(nftId, userId) {
