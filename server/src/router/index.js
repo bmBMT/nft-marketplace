@@ -92,7 +92,7 @@ router.post('/nft/getNfts',
 // collection
 router.post('/collection/create',
   body('name').isString(),
-  // body('nfts').isArray(),
+  body('nfts').isArray(),
   authMiddleware,
   CollectionController.create
 );

@@ -1,13 +1,13 @@
 export default class CollectionDto {
   id;
   name;
-  onwer;
+  owner;
   nfts;
 
   constructor(model) {
     this.id = model._id;
     this.name = model.name;
-    this.onwer = {
+    this.owner = {
       id: model.owner._id,
       avatar: process.env.API_URL + "/" + model.owner.avatar,
       username: model.owner.username

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './NftCard.module.scss'
+import UserCardInfo from '@/components/UserCardInfo/UserCardInfo.jsx'
 
 const NftCard = ({ nft, backgroundColor }) => {
   const categorieClassNames = {
@@ -14,10 +15,7 @@ const NftCard = ({ nft, backgroundColor }) => {
       <div className={styles.info}>
         <div className={styles.nftInfo}>
           <h5>{nft.name}</h5>
-          <div className={styles.artistInfo}>
-            <img className={styles.avatar} src={nft.owner.avatar} alt="avatar" />
-            <span>{nft.owner.username}</span>
-          </div>
+          <UserCardInfo user={nft.owner} />
         </div>
         <div className={styles.additionalInfo}>
           <section className={styles.additional}>
