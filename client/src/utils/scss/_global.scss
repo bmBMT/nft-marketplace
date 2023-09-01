@@ -80,7 +80,7 @@ a {
   cursor: pointer;
 
   &:hover {
-    color: $btn-bg;
+    color: $btn-bg !important;
   }
 }
 nav {

@@ -1,12 +1,13 @@
 import { memo } from 'react'
 import styles from './CustomLink.module.scss'
+import { Link } from 'react-router-dom'
 
-const CustomLink = ({ children, icon, to }) => {
+const CustomLink = ({ children, icon, to, color }) => {
   return (
-    <a href={to} className={styles.link}>
+    <Link href={to} className={styles.link} style={{ color }}>
       <img src={icon} alt="" />
       {children}
-    </a>
+    </Link>
   )
 }
 
