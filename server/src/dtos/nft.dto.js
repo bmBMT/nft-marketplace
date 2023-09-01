@@ -8,7 +8,7 @@ export default class NftDto {
   creator;
   owner;
   description;
-  categorie;
+  category;
   tags;
   price;
 
@@ -28,7 +28,7 @@ export default class NftDto {
       username: model.owner.username
     };
     this.description = model.description;
-    this.categorie = model.categorie;
+    this.category = model.category;
     this.tags = model.tags;
     this.price = model.price;
   }

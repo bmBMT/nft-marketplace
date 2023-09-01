@@ -6,9 +6,10 @@ import walletService from './wallet.service.js';
 import path from 'path'
 import fs from 'fs';
 import NftDto from '../dtos/nft.dto.js';
+import UserInfoClass from '../utils/userInfoClass.js'
 
 class NftService {
-  async create(name, img, userId, description, categorie, tags, price) {
+  async create(name, img, userId, description, category, tags, price) {
     const candidate = await nftModel.findOne({ name });
     if (candidate) {
       throw ApiError.BadRequest('Nft with this name already exists');
@@ -16,11 +17,7 @@ class NftService {
 
     const fileName = new Date().getTime() + '.webp';
     const user = await userModel.findById(userId);
-    const userInfo = {
-      _id: user._id,
-      avatar: user.avatar.path,
-      username: user.username
-    };
+    const userInfo = new UserInfoClass(user);
 
     const nft = await nftModel.create({
       name,
@@ -28,7 +25,7 @@ class NftService {
       creator: userInfo,
       owner: userInfo,
       description,
-      categorie,
+      category,
       tags,
       price
     })
@@ -69,11 +66,7 @@ class NftService {
     owner.save();
     user.save();
 
-    nft.owner = {
-      _id: user._id,
-      avatar: user.avatar.path,
-      username: user.username
-    }
+    nft.owner = new UserInfoClass(user);
     nft.save();
 
     return nft._id;

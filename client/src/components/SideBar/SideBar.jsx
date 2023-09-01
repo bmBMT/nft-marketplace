@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { memo, useCallback, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Toggle from './Toggle/Toggle'
 import Menu from './Menu/Menu'
@@ -12,13 +12,13 @@ const SideBar = ({ children }) => {
     setIsMenuActive(false)
   }, [location])
 
-  function changeMenuVisibility() {
-    setIsMenuActive(!isMenuActive)
-  }
+  const changeMenuVisibility = useCallback(() => {
+    setIsMenuActive(prevState => !prevState)
+  }, [])
 
-  function hideMenu() {
+  const hideMenu = useCallback(() => {
     setIsMenuActive(false)
-  }
+  }, []);
 
   return (
     <>
@@ -31,4 +31,4 @@ const SideBar = ({ children }) => {
   )
 }
 
-export default SideBar
+export default memo(SideBar)

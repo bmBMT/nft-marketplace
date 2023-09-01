@@ -1,10 +1,10 @@
 import { memo } from 'react'
 import styles from './CustomLink.module.scss'
 
-const CustomLink = ({ children, icon, to }) => {
+const CustomLink = ({ children, icon, iconSrc = '', to }) => {
   return (
     <a href={to} className={styles.link}>
-      <img src={icon} alt="" />
+      <img src={icon || iconSrc} alt="" />
       {children}
     </a>
   )

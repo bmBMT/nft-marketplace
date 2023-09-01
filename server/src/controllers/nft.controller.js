@@ -11,10 +11,10 @@ class NftController {
       }
 
       const user = req.user;
-      const { name, description, categorie, tags = [], price } = req.body;
+      const { name, description, category, tags = [], price } = req.body;
       const { img } = req.files;
 
-      const nftId = await nftService.create(name, img, user.id, description, categorie, tags, price);
+      const nftId = await nftService.create(name, img, user.id, description, category, tags, price);
 
       return res.json(nftId);
     } catch (e) {

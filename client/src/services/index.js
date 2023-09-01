@@ -1,7 +1,7 @@
-import AuthService from "./auth/auth.service";
-import LocalStorage from "./localStorage/localStorage.service";
-import NftService from "./nft/nft.service";
-import WalletService from "./wallet/wallet.service";
-import CollectionService from '@/services/collection.service.js'
+import AuthService from "./auth.service.js";
+import LocalStorage from "./localStorage.service.js";
+import NftService from "./nft.service.js";
+import WalletService from "./wallet.service.js";
+import CollectionService from './collection.service.js'
 
 export { AuthService, LocalStorage, NftService, WalletService, CollectionService }

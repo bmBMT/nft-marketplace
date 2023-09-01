@@ -1,5 +1,20 @@
 import styles from './UserCardInfo.module.scss'
-import Loader from '@/components/UserCardInfo/loader.jsx'
+import Row from '@/components/Row/Row.jsx'
+import Skeleton from 'react-loading-skeleton'
+import { memo } from 'react'
+
+const Loader = () => {
+  return (
+    <Row gap={12} alignItems='end'>
+      <Skeleton
+        width={24}
+        height={24}
+        borderRadius={20}
+      />
+      <Skeleton width={60} />
+    </Row>
+  )
+}
 
 const UserCardInfo = ({ user, loader = false }) => {
   if (loader){
@@ -14,4 +29,4 @@ const UserCardInfo = ({ user, loader = false }) => {
   )
 }
 
-export default UserCardInfo
+export default memo(UserCardInfo)

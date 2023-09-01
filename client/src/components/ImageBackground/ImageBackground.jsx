@@ -1,7 +1,16 @@
 import { memo } from 'react'
 import styles from './ImageBackground.module.scss'
+import Skeleton from 'react-loading-skeleton'
 
-const ImageBackground = ({ img, height, gradient = false, radius = 0 }) => {
+const Loader = ({ height }) => {
+  return <Skeleton baseColor="#232323" height={height} />
+}
+
+const ImageBackground = ({ img, height, gradient = false, radius = 0, isLoading }) => {
+  if (isLoading){
+    return <Loader height={height} />
+  }
+
   return (
     <div
       style={{
