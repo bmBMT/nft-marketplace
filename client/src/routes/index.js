@@ -1,4 +1,4 @@
-import publicRoutes from "./public/public.routes";
-import privateRoutes from "./private/private.routes";
+import publicRoutes from "./public.routes.js";
+import privateRoutes from "./private.routes.js";
 
 export { publicRoutes, privateRoutes }

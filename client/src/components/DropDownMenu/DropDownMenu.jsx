@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styles from './DropDownMenu.module.scss'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, memo } from 'react'
 import { Link } from 'react-router-dom'
 
 function DropDownMenu({ isOpen, setIsOpen, toggle, links }) {
@@ -52,4 +52,4 @@ DropDownMenu.propTypes = {
   links: PropTypes.array,
 }
 
-export default DropDownMenu
+export default memo(DropDownMenu)

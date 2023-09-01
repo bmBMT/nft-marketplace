@@ -15,3 +15,13 @@
     grid-template-columns: 1fr;
   }
 }
+.emptyMessage {
+  min-height: 623.28px;
+  padding-top: 50px;
+}
+
+@media (max-width: 670px) {
+  .emptyMessage {
+    min-height: 566.28px;
+  }
+}

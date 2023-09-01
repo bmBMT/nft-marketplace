@@ -1,4 +1,4 @@
-import { forwardRef, useId, useState } from 'react'
+import { forwardRef, memo, useId, useState } from 'react'
 import styles from './Input.module.scss'
 import eyeIcon from '@/assets/icons/Eye.svg'
 import eyeSlashIcon from '@/assets/icons/EyeSlash.svg'
@@ -37,4 +37,4 @@ const Input = forwardRef((props, ref) => {
   )
 })
 
-export default Input
+export default memo(Input)

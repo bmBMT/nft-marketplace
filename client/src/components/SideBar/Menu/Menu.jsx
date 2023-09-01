@@ -1,5 +1,6 @@
 import { useDeviceWidth } from '@/utils/hooks/useDeviceWidth'
 import styles from './Menu.module.scss'
+import { memo } from 'react'
 
 const Menu = ({ callback, state, children }) => {
   const { isTablet } = useDeviceWidth()
@@ -16,4 +17,4 @@ const Menu = ({ callback, state, children }) => {
   )
 }
 
-export default Menu
+export default memo(Menu)

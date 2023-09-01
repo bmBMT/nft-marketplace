@@ -32,12 +32,7 @@ const Tabs = ({
       </Container>
       <div style={{ backgroundColor }}>
         <Container>
-          {children[selectedTabIndex].props.children &&
-          children[selectedTabIndex].props.children[0] ? (
-            children[selectedTabIndex]
-          ) : (
-            <h2 className={styles.listEmptyMesage}>The list is empty</h2>
-          )}
+          {children[selectedTabIndex]}
         </Container>
       </div>
     </section>

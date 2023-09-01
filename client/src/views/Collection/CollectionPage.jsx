@@ -5,8 +5,7 @@ import { CollectionService } from '@/services/index.js'
 import Container from '@/components/Container/Container.jsx'
 import CollectionInfo from '@/views/Collection/sections/CollectionInfo.jsx'
 import TabPane from '@/components/Tabs/TabPane/TabPane'
-import NftCard from '@/components/NftCard/NftCard.jsx'
-import NftSkeletonCard from '@/components/NftCard/NftSkeletonCard/NftSkeletonCard.jsx'
+import NftCard from '@/views/Nft/components/NftCard/NftCard.jsx'
 
 const CollectionPage = () => {
     const { id } = useParams()
@@ -37,9 +36,9 @@ const CollectionPage = () => {
                     {
                         isLoading ?
                           <>
-                              <NftSkeletonCard />
-                              <NftSkeletonCard />
-                              <NftSkeletonCard />
+                              <NftCard loader />
+                              <NftCard loader />
+                              <NftCard loader />
                           </>
                           :
                           nfts.map((nft) => <NftCard key={nft.id} nft={nft} backgroundColor="#3B3B3B" />)

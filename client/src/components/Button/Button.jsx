@@ -1,6 +1,7 @@
-import React from 'react'
+import { memo } from 'react'
 import PropTypes from 'prop-types'
 import styles from './Button.module.scss'
+import { useDeviceWidth } from '@/utils/hooks/useDeviceWidth.js'
 
 const ButtonSizes = {
   primary: styles.primary,
@@ -9,15 +10,18 @@ const ButtonSizes = {
 }
 
 const Button = ({ width, children, filled = true, size, padding, ...props }) => {
-  const classes = [styles.button, filled ? styles.filled : styles.outlined, ButtonSizes[size]].join(
-    ' '
-  )
+  const classes = [
+    styles.button,
+    filled ? styles.filled : styles.outlined,
+    ButtonSizes[size]
+  ].join(' ')
+  const { isPhone } = useDeviceWidth()
 
   return (
     <button
       {...props}
       style={{
-        width,
+        width: isPhone ? '100%' : width,
         padding: `0 ${padding}px`,
         opacity: props.disabled ? '0.4' : '1',
         ...props.style,
@@ -35,4 +39,4 @@ Button.propTypes = {
   padding: PropTypes.number,
 }
 
-export default Button
+export default memo(Button)
