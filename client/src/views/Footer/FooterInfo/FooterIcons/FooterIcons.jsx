@@ -6,11 +6,9 @@ import Row from '@/components/Row/Row'
 import CustomLink from '@/components/CustomLink/CustomLink'
 
 const FooterIcons = () => {
-  const Icons = [DiscordLogo, YoutubedLogo, TwitterLogo, InstagramLogo].map((icon, index) => (
+  return <Row gap={'10px'}>{[DiscordLogo, YoutubedLogo, TwitterLogo, InstagramLogo].map((icon, index) => (
     <CustomLink key={index} icon={icon} to={'/'} />
-  ))
-
-  return <Row gap={'10px'}>{Icons}</Row>
+  ))}</Row>
 }
 
 export default FooterIcons
