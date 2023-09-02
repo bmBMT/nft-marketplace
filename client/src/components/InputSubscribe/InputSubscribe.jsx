@@ -2,6 +2,7 @@ import { useDeviceWidth } from '@/utils/hooks/useDeviceWidth'
 import styles from './InputSubscribe.module.scss'
 import Input from '../Input/Input'
 import Button from '../Button/Button'
+import { memo } from 'react';
 
 const InputSubscribe = () => {
   const { isPhone } = useDeviceWidth()
@@ -21,4 +22,4 @@ const InputSubscribe = () => {
   )
 }
 
-export default InputSubscribe
+export default memo(InputSubscribe)

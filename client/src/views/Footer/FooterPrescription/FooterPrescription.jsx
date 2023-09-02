@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 const FooterPrescription = () => {
   return (
     <label style={{ borderTop: '1px solid #858584', paddingTop: '20px', color: '#CCCCCC', width: '100%', textAlign: "start"}}>
@@ -6,4 +8,4 @@ const FooterPrescription = () => {
   )
 }
 
-export default FooterPrescription
+export default memo(FooterPrescription)

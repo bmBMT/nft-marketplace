@@ -3,6 +3,7 @@ import Container from '@/components/Container/Container'
 import FooterInfo from './FooterInfo/FooterInfo'
 import FooterPrescription from './FooterPrescription/FooterPrescription'
 import Col from '@/components/Col/Col'
+import { memo } from 'react';
 
 const Footer = () => {
   const { isDesktop, isTablet, isPhone } = useDeviceWidth()
@@ -20,4 +21,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default memo(Footer)
