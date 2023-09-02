@@ -21,7 +21,8 @@ const FooterInfoData = () => {
           <CustomLink
             key={index}
             to={'/'}
-            children={<span style={{ color: '#CCCCCC' }}>{name}</span>}
+            color='#CCCCCC'
+            children={name}
           />
         )),
       },
