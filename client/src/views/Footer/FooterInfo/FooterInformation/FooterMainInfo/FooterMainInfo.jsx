@@ -4,7 +4,7 @@ import Col from '@/components/Col/Col'
 import { memo } from 'react'
 import FooterIcons from '../../FooterIcons/FooterIcons'
 
-const FooterNftLogo = () => {
+const FooterMainInfo = () => {
   const { isDesktop } = useDeviceWidth()
 
   return (
@@ -22,4 +22,4 @@ const FooterNftLogo = () => {
   )
 }
 
-export default memo(FooterNftLogo)
+export default memo(FooterMainInfo)
