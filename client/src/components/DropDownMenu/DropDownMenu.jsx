@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import styles from './DropDownMenu.module.scss'
 import { useRef, useEffect, memo } from 'react'
 import { Link } from 'react-router-dom'
-import CustomLink from '../CustomLink/CustomLink'
 
 function DropDownMenu({ isOpen, setIsOpen, toggle, links }) {
   const wrapperRef = useRef()
@@ -31,18 +30,15 @@ function DropDownMenu({ isOpen, setIsOpen, toggle, links }) {
       {isOpen && (
         <div className={styles.list}>
           {links.map((link) => (
-            // <Link
-            //   key={link.to}
-            //   onClick={() => close(link.action)}
-            //   to={link.to}
-            //   className={styles.link}
-            // >
-            //   <img src={link.img} alt="" />
-            //   <span>{link.title}</span>
-            // </Link>
-            <CustomLink key={link.to} icon={link.img} to={link.to} onClick={link.action}>
-              <span>{link.title}</span>
-            </CustomLink>
+            <Link
+              key={link.to}
+              onClick={() => close(link.action)}
+              to={link.to}
+              className={styles.link}
+            >
+              <img src={link.img} alt="" />
+            <span>{link.title}</span>
+            </Link>
           ))}
         </div>
       )}
