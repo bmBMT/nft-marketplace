@@ -11,9 +11,8 @@ const FooterExplorePages = () => {
       <Col gap={'30px'}>
         <h5 style={{ fontFamily: 'Space Mono', color: '#FFFFFF' }}>Explore</h5>
         <Col gap={'20px'} maxWidth={isDesktop ? '238px' : '690px'}>
-          {['Marketplace', 'Rankings'].map((name, index) => (
-            <CustomLink key={index} to={'/'} color="#CCCCCC" children={name} />
-          ))}
+            <CustomLink to={'/'} color="#CCCCCC" children={'Marketplace'} />
+            <CustomLink to={'/'} color="#CCCCCC" children={'Rankings'} />
         </Col>
       </Col>
     </>

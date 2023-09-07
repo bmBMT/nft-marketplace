@@ -1,13 +1,17 @@
 import { useDeviceWidth } from '@/utils/hooks/useDeviceWidth'
 import Container from '@/components/Container/Container'
-import FooterInfo from './FooterInfo/FooterInfo'
-import FooterPrescription from './FooterPrescription/FooterPrescription'
+
 import Col from '@/components/Col/Col'
 import { memo } from 'react';
+import FooterInfo from './sections/FooterInfo';
+import FooterPrescription from './sections/FooterPrescription';
 
 const Footer = () => {
-  const { isDesktop, isTablet, isPhone } = useDeviceWidth()
-  const padding = isDesktop ? '40px 195px' : isTablet ? '15px 50px' : '15px 30px'
+  const { isPhone } = useDeviceWidth()
+
+  // const { isDesktop, isTablet, isPhone } = useDeviceWidth()
+  // const padding = isDesktop ? '40px 40px' : isTablet ? '40px 0px' : '40px 0px'
+// Ширина перехода в режим isTablet
 
   return (
     <footer style={{ backgroundColor: '#3B3B3B' }}>

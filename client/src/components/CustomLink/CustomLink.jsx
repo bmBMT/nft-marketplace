@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 
 const CustomLink = ({ children, icon, to, color }) => {
   return (
-    <Link href={to} className={styles.link} style={{ color }}>
+    <a href={to} className={styles.link} style={{ color }}>
       <img src={icon} alt="" />
       {children}
-    </Link>
+    </a>
   )
 }
 
