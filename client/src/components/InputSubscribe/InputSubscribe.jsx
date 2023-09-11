@@ -7,8 +7,8 @@ import { memo } from 'react';
 const InputSubscribe = () => {
   const { isPhone } = useDeviceWidth()
 
-  const InputStyles = isPhone ? {display: 'block', boxSizing: 'border-box', padding: '16px 20px 16px 20px', height: '46px', border: '0px solid $secondary-bg'} : {display: 'block', boxSizing: 'border-box', padding: '16px 177px 16px 20px', height: '60px', border: '0px solid $secondary-bg'}
-  const ButtonStyles = isPhone ? {position: 'static', boxSizing: 'border-box', border: '0px solid $btn-bg', height: '46px', padding: '0 50px', fontSize: '16px'} : {position: 'absolute', boxSizing: 'border-box', top: '2px', right: '0px', border: '0px solid $btn-bg', height: '56.5px', padding: '0 50px', fontSize: '16px'} 
+  const InputStyles = isPhone ? styles.phoneInput : styles.desktopInput;
+  const ButtonStyles = isPhone ? styles.phoneButton : styles.desktopButton; 
 
 
   return (
